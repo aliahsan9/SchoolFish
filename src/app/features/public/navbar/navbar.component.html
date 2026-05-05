@@ -1,0 +1,64 @@
+<!-- NAVBAR -->
+<nav class="navbar custom-navbar fixed-top"
+     [ngClass]="{'scrolled': isScrolled}">
+
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- LOGO -->
+    <a class="logo" routerLink="/">🎓 SchoolFish</a>
+
+    <!-- DESKTOP NAV -->
+    <ul class="nav-links d-none d-lg-flex">
+      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+      <li><a routerLink="/features" routerLinkActive="active">Features</a></li>
+      <li><a routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
+      <li><a routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
+      <li><a routerLink="/services" routerLinkActive="active">Services</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      <li><a routerLink="/privacy" routerLinkActive="active">Privacy</a></li>
+    </ul>
+    <!-- ACTION BUTTONS -->
+    <div class="auth-buttons d-none d-lg-flex">
+      <a routerLink="/login" class="btn btn-outline-primary btn-sm">Login</a>
+      <a routerLink="/register" class="btn btn-primary btn-sm">Sign Up</a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger d-lg-none" (click)="toggleSidebar()">
+      ☰
+    </div>
+
+  </div>
+  
+</nav>
+
+<!-- OVERLAY -->
+<div class="overlay"
+     *ngIf="isSidebarOpen"
+     (click)="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" [ngClass]="{'open': isSidebarOpen}">
+
+  <div class="sidebar-header">
+    <span>🎓 SchoolFish</span>
+    <button (click)="closeSidebar()">✕</button>
+  </div>
+
+  <ul class="sidebar-links">
+    <li><a routerLink="/" (click)="closeSidebar()">Home</a></li>
+    <li><a routerLink="/about" (click)="closeSidebar()">About</a></li>
+    <li><a routerLink="/features" (click)="closeSidebar()">Features</a></li>
+    <li><a routerLink="/pricing" (click)="closeSidebar()">Pricing</a></li>
+    <li><a routerLink="/blogs" (click)="closeSidebar()">Blogs</a></li>
+    <li><a routerLink="/services" (click)="closeSidebar()">Services</a></li>
+    <li><a routerLink="/contact" (click)="closeSidebar()">Contact</a></li>
+    <li><a routerLink="/privacy" (click)="closeSidebar()">Privacy</a></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a routerLink="/login" class="btn btn-outline-primary w-100 mb-2" (click)="closeSidebar()">Login</a>
+    <a routerLink="/register" class="btn btn-primary w-100" (click)="closeSidebar()">Sign Up</a>
+  </div>
+</div>

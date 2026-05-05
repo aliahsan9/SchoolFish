@@ -1,0 +1,151 @@
+/* NAVBAR */
+.custom-navbar {
+  transition: all 0.3s ease;
+  padding: 15px 0;
+  background: transparent;
+  z-index: 1000;
+  background: #141c2f;
+
+  &.scrolled {
+    // background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  }
+}
+
+/* LOGO */
+.logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+/* DESKTOP NAV */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+
+  a {
+    text-decoration: none;
+    color: #f3f3f3;
+    font-weight: 500;
+    position: relative;
+
+    &:hover {
+      color: #0d6efd;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #0d6efd;
+      transition: 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  .active {
+    color: #0d6efd;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+/* BUTTONS */
+.auth-buttons .btn {
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+/* HAMBURGER */
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: #141c2f;
+  z-index: 1000;
+  transition: 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.open {
+    right: 0;
+  }
+}
+
+/* SIDEBAR HEADER */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  button {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+/* SIDEBAR LINKS */
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+
+  li {
+    margin-bottom: 15px;
+
+    a {
+      text-decoration: none;
+      color: #fefcfc;
+      font-size: 16px;
+      transition: 0.3s;
+
+      &:hover {
+        color: #0d6efd;
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+/* FOOTER */
+.sidebar-footer {
+  margin-top: auto;
+}

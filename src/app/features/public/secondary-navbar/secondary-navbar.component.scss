@@ -1,0 +1,90 @@
+.secondary-navbar {
+  background: #1b263f;
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* GRADIENT EDGES (PREMIUM LOOK) */
+.secondary-navbar::before,
+.secondary-navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+}
+
+.secondary-navbar::before {
+  left: 0;
+  background: linear-gradient(to right, #0f172a, transparent);
+}
+
+.secondary-navbar::after {
+  right: 0;
+  background: linear-gradient(to left, #0f172a, transparent);
+}
+
+/* SCROLL AREA */
+.scroll-wrapper {
+  overflow: hidden;
+}
+
+/* ANIMATION TRACK */
+.scroll-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+/* PAUSE ON HOVER */
+.scroll-wrapper:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+/* SCHOOL ITEM */
+.school-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: 0.3s;
+
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    color: #0d6efd;
+    transform: scale(1.05);
+  }
+}
+
+/* ANIMATION */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .scroll-track {
+    gap: 20px;
+    animation-duration: 18s;
+  }
+
+  .school-item span {
+    font-size: 14px;
+  }
+}

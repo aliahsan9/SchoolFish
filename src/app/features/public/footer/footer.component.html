@@ -1,0 +1,62 @@
+<footer class="footer mt-0">
+
+  <div class="container py-5">
+    <div class="row g-4">
+
+      <!-- BRAND -->
+      <div class="col-lg-4">
+        <h4 class="logo">🎓 SchoolFish</h4>
+        <p class="mt-3 text-light">
+          A modern school management system to digitize your campus operations —
+          from admissions to analytics.
+        </p>
+
+        <!-- SOCIAL -->
+        <div class="social-icons mt-3">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-twitter"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-instagram"></i>
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-lg-2 col-md-4">
+        <h6 class="footer-title">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li *ngFor="let link of quickLinks">
+            <a [routerLink]="link.link">{{link.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="col-lg-3 col-md-4">
+        <h6 class="footer-title">Support</h6>
+        <ul class="list-unstyled">
+          <li *ngFor="let link of supportLinks">
+            <a [routerLink]="link.link">{{link.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="col-lg-3 col-md-4">
+        <h6 class="footer-title">Stay Updated</h6>
+        <p class="small text-light">Subscribe to our newsletter</p>
+
+        <div class="input-group mt-3">
+          <input type="email" class="form-control" placeholder="Enter email">
+          <button class="btn btn-primary">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom text-center py-3">
+    © {{currentYear}} SchoolFish. All rights reserved.
+  </div>
+
+</footer>

@@ -1,0 +1,25 @@
+<div class="secondary-navbar">
+
+  <div class="container-fluid">
+
+    <div class="scroll-wrapper">
+
+      <div class="scroll-track">
+
+        <!-- LOOP TWICE FOR INFINITE EFFECT -->
+        <ng-container *ngFor="let school of schools.concat(schools)">
+
+          <div class="school-item">
+            <img [src]="school.logo" />
+            <span>{{ school.name }}</span>
+          </div>
+
+        </ng-container>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

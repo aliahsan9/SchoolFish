@@ -1,0 +1,87 @@
+.login-wrapper {
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  background: #86c5c6;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    border-radius: 10px;
+    border: none;
+    background: #6fb6b7;
+    color: #fff;
+    padding: 10px;
+
+    &::placeholder {
+      color: #e0f7f7;
+    }
+
+    &:focus {
+      box-shadow: none;
+      background: #5aa9aa;
+    }
+  }
+}
+
+/* BUTTON */
+.login-btn {
+  background: #2c8c8c;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  transition: 0.3s;
+
+  &:hover {
+    background: #1f6f6f;
+    transform: translateY(-2px);
+  }
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  background: linear-gradient(135deg, #2c8c8c, #3fa4a4);
+
+  .illustration {
+    max-width: 80%;
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* LINKS */
+a {
+  color: #0d3b3b;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .left-panel {
+    padding: 30px;
+  }
+}

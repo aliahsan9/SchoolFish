@@ -1,0 +1,28 @@
+@use 'bootstrap/scss/bootstrap';
+
+body {
+  background: #d8fbff;
+  color: #06373b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-brand {
+  background: #08d7df;
+  border-color: #08d7df;
+  color: #043438;
+  font-weight: 600;
+}
+
+.btn-brand:hover {
+  background: #00c2cb;
+  border-color: #00c2cb;
+  color: #042f32;
+}
+
+.text-brand-dark {
+  color: #0a4f54;
+}
+
+.card {
+  border-radius: 0.9rem;
+}
