@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -14,8 +14,9 @@ import { AuthService } from '../../../core/services/auth.service';
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);
 
-  loading = false;
-  errorMessage = '';
+  loading = signal(false);
+  errorMessage = signal('');
+  showPassword = signal(false);
 
   readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -27,17 +28,23 @@ export class LoginComponent {
     private readonly router: Router
   ) {}
 
+  togglePassword() {
+    this.showPassword.update(v => !v);
+  }
+
   submit(): void {
     if (this.form.invalid) return;
 
-    this.errorMessage = '';
-    this.loading = true;
+    this.errorMessage.set('');
+    this.loading.set(true);
 
     this.authService.login(this.form.getRawValue()).subscribe({
-      next: () => void this.router.navigateByUrl('/app/dashboard'),
+      next: () => {
+        this.router.navigateByUrl('/app/dashboard');
+      },
       error: () => {
-        this.loading = false;
-        this.errorMessage = 'Login failed. Check tenant header, credentials, and role permissions.';
+        this.loading.set(false);
+        this.errorMessage.set('Invalid credentials or tenant issue.');
       }
     });
   }

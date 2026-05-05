@@ -1,80 +1,107 @@
-<div class="register-wrapper d-flex align-items-center justify-content-center">
+<div class="register-wrapper">
 
-  <div class="register-card row g-0 shadow-lg">
+  <div class="register-container row g-0 ">
 
-    <!-- LEFT SIDE (FORM) -->
-    <div class="col-lg-6 left-panel p-5">
+    <!-- LEFT -->
+    <div class="col-lg-6 left-panel text-center">
 
-      <div class="logo mb-4">🎓</div>
+      <div class="content">
 
-      <h2 class="fw-bold">Create Account</h2>
-      <p class="text-muted mb-4">Please enter your details</p>
+        <div class="brand">
+          <span>🎓</span>
+          <h4>SchoolFish</h4>
+        </div>
 
-      <div class="alert alert-danger" *ngIf="errorMessage">
-        {{ errorMessage }}
+        <h2>Create Account </h2>
+        <p>Start managing your school in minutes</p>
+
+        <div class="alert alert-danger" *ngIf="errorMessage()">
+          {{ errorMessage() }}
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+          <!-- NAME -->
+          <div class="row">
+            <div class="col-md-6 mb-3 form-floating">
+              <input class="form-control" placeholder="First Name" formControlName="firstName">
+              <label>First Name</label>
+            </div>
+
+            <div class="col-md-6 mb-3 form-floating">
+              <input class="form-control" placeholder="Last Name" formControlName="lastName">
+              <label>Last Name</label>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-floating mb-3">
+            <input class="form-control" placeholder="Email" formControlName="email">
+            <label>Email address</label>
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-floating mb-3">
+            <input class="form-control" placeholder="Phone" formControlName="phoneNumber">
+            <label>Phone Number (optional)</label>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-floating mb-2 position-relative">
+            <input [type]="showPassword() ? 'text' : 'password'"
+                   class="form-control"
+                   placeholder="Password"
+                   formControlName="password">
+            <label>Password</label>
+
+            <span class="toggle-password" (click)="togglePassword()">
+              {{ showPassword() ? '🙈' : '👁️' }}
+            </span>
+          </div>
+
+          <!-- PASSWORD STRENGTH -->
+          <div class="strength mb-3">
+            <div class="bar" [ngClass]="'lvl-' + passwordStrength()"></div>
+          </div>
+
+          <!-- ROLE SELECTOR -->
+          <div class="role-selector mb-4">
+            <div *ngFor="let role of roles"
+                 (click)="setRole(role)"
+                 [class.active]="form.value.roleName === role">
+              {{ role }}
+            </div>
+          </div>
+
+          <!-- BUTTON -->
+          <button class="btn signup-btn w-100"
+                  [disabled]="form.invalid || loading()">
+
+            <span *ngIf="!loading()">Create Account →</span>
+            <span *ngIf="loading()" class="spinner-border spinner-border-sm"></span>
+          </button>
+
+        </form>
+
+        <p class="mt-4 text-center small">
+          Already have an account?
+          <a routerLink="/login">Sign in →</a>
+        </p>
+
       </div>
-
-      <form [formGroup]="form" (ngSubmit)="submit()">
-
-        <div class="mb-3">
-          <label>Full Name</label>
-          <div class="d-flex gap-2">
-            <input class="form-control" placeholder="First name" formControlName="firstName" />
-            <input class="form-control" placeholder="Last name" formControlName="lastName" />
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label>Email</label>
-          <input class="form-control" placeholder="Email" formControlName="email" />
-        </div>
-
-        <div class="mb-3">
-          <label>Password</label>
-          <input type="password" class="form-control" placeholder="Password" formControlName="password" />
-        </div>
-
-        <div class="mb-3">
-          <label>Phone Number</label>
-          <input class="form-control" placeholder="Phone number" formControlName="phoneNumber" />
-        </div>
-
-        <div class="mb-3">
-          <select class="form-select" formControlName="roleName">
-            <option value="Admin">Admin</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Student">Student</option>
-          </select>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center mb-3 small">
-          <div>
-            <input type="checkbox" class="form-check-input me-2">
-            Remember me
-          </div>
-          <a href="#">Forgot Password?</a>
-        </div>
-
-        <button class="btn signup-btn w-100"
-                [disabled]="form.invalid || loading">
-          {{ loading ? 'Creating...' : 'SignUp →' }}
-        </button>
-
-      </form>
-
-      <p class="mt-3 small">
-        Already Have an Account?
-        <a routerLink="/login">Login to Account →</a>
-      </p>
-
     </div>
 
-    <!-- RIGHT SIDE (VISUAL) -->
-    <div class="col-lg-6 right-panel d-none d-lg-flex flex-column justify-content-center align-items-center">
+    <!-- RIGHT -->
+    <div class="col-lg-6 right-panel d-none d-lg-flex">
 
-      <h2 class="text-white fw-bold mb-4">SignUp Now</h2>
+      <div class="overlay"></div>
 
-      <img src="assets/school.webp" class="img-fluid illustration" />
+      <div class="visual-content">
+        <h1>Join Smart Schools</h1>
+        <p>Digitize operations. Scale effortlessly.</p>
+
+        <img src="assets/school.webp" alt="visual">
+      </div>
 
     </div>
 

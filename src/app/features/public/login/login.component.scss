@@ -1,78 +1,137 @@
 .login-wrapper {
   min-height: 100vh;
-  background: #f4f4f4;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* CARD */
-.login-card {
+/* MAIN CONTAINER */
+.login-container {
+  max-width: 1100px;
   width: 100%;
-  max-width: 1000px;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
 /* LEFT PANEL */
 .left-panel {
-  background: #86c5c6;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(25px);
+  color: #fff;
 
-  label {
-    font-weight: 500;
-    margin-bottom: 5px;
+  .content {
+    padding: 50px;
   }
 
-  .form-control {
-    border-radius: 10px;
-    border: none;
-    background: #6fb6b7;
-    color: #fff;
-    padding: 10px;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
 
-    &::placeholder {
-      color: #e0f7f7;
+    span {
+      font-size: 28px;
     }
 
-    &:focus {
-      box-shadow: none;
-      background: #5aa9aa;
+    h4 {
+      margin: 0;
+      font-weight: 600;
     }
   }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  p {
+    color: #ccc;
+  }
+}
+
+/* FLOATING INPUT */
+.form-control {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(0,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+  }
+}
+
+.form-floating label {
+  color: #bbb;
+}
+
+/* PASSWORD TOGGLE */
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 /* BUTTON */
 .login-btn {
-  background: #2c8c8c;
-  color: #fff;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
   padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
   transition: 0.3s;
 
   &:hover {
-    background: #1f6f6f;
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
   }
 }
 
 /* RIGHT PANEL */
 .right-panel {
-  background: linear-gradient(135deg, #2c8c8c, #3fa4a4);
+  position: relative;
+  background: url('/assets/school.webp') center/cover no-repeat;
 
-  .illustration {
-    max-width: 80%;
-    animation: float 3s ease-in-out infinite;
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+  }
+
+  .visual-content {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+
+    h1 {
+      font-weight: 700;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 80%;
+      animation: float 4s ease-in-out infinite;
+    }
   }
 }
 
 /* FLOAT ANIMATION */
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
 /* LINKS */
 a {
-  color: #0d3b3b;
-  font-weight: 500;
+  color: #00c6ff;
 
   &:hover {
     text-decoration: underline;
@@ -81,7 +140,7 @@ a {
 
 /* RESPONSIVE */
 @media (max-width: 991px) {
-  .left-panel {
+  .left-panel .content {
     padding: 30px;
   }
 }

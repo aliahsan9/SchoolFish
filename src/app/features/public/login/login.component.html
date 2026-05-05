@@ -1,59 +1,87 @@
-<div class="login-wrapper d-flex align-items-center justify-content-center">
+<div class="login-wrapper">
 
-  <div class="login-card row g-0 shadow-lg">
+  <div class="login-container row g-0">
 
-    <!-- LEFT SIDE (FORM) -->
-    <div class="col-lg-6 left-panel p-5">
+    <!-- LEFT SIDE -->
+    <div class="col-lg-6 left-panel text-center">
 
-      <div class="logo mb-4">🎓</div>
+      <div class="content">
 
-      <h2 class="fw-bold">Welcome Back</h2>
-      <p class="text-muted mb-4">Login to your account</p>
-
-      <div class="alert alert-danger" *ngIf="errorMessage">
-        {{ errorMessage }}
-      </div>
-
-      <form [formGroup]="form" (ngSubmit)="submit()">
-
-        <div class="mb-3">
-          <label>Email</label>
-          <input class="form-control" type="email" placeholder="Enter email" formControlName="email" />
+        <div class="brand">
+          <span>🎓</span>
+          <h4>SchoolFish</h4>
         </div>
 
-        <div class="mb-3">
-          <label>Password</label>
-          <input class="form-control" type="password" placeholder="Enter password" formControlName="password" />
+        <h2>Welcome Back</h2>
+        <p>Sign in to continue your dashboard</p>
+
+        <div class="alert alert-danger" *ngIf="errorMessage()">
+          {{ errorMessage() }}
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3 small">
-          <div>
-            <input type="checkbox" class="form-check-input me-2">
-            Remember me
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+          <!-- EMAIL -->
+          <div class="form-floating mb-3">
+            <input type="email"
+                   class="form-control"
+                   placeholder="Email"
+                   formControlName="email">
+            <label>Email address</label>
           </div>
-          <a href="#">Forgot Password?</a>
-        </div>
 
-        <button class="btn login-btn w-100"
-                [disabled]="form.invalid || loading">
-          {{ loading ? 'Signing in...' : 'Sign In →' }}
-        </button>
+          <!-- PASSWORD -->
+          <div class="form-floating mb-3 position-relative">
+            <input [type]="showPassword() ? 'text' : 'password'"
+                   class="form-control"
+                   placeholder="Password"
+                   formControlName="password">
 
-      </form>
+            <label>Password</label>
 
-      <p class="mt-3 small">
-        Don’t have an account?
-        <a routerLink="/register">Sign up →</a>
-      </p>
+            <span class="toggle-password" (click)="togglePassword()">
+              {{ showPassword() ? '🙈' : '👁️' }}
+            </span>
+          </div>
 
+          <!-- OPTIONS -->
+          <div class="d-flex justify-content-between align-items-center mb-4 small">
+            <label class="remember">
+              <input type="checkbox"> Remember me
+            </label>
+            <a href="#">Forgot Password?</a>
+          </div>
+
+          <!-- BUTTON -->
+          <button class="btn login-btn w-100"
+                  [disabled]="form.invalid || loading()">
+
+            <span *ngIf="!loading()">Sign In →</span>
+
+            <span *ngIf="loading()" class="spinner-border spinner-border-sm"></span>
+          </button>
+
+        </form>
+
+        <p class="mt-4 text-center small">
+          Don’t have an account?
+          <a routerLink="/register">Create one →</a>
+        </p>
+
+      </div>
     </div>
 
-    <!-- RIGHT SIDE (VISUAL) -->
-    <div class="col-lg-6 right-panel d-none d-lg-flex flex-column justify-content-center align-items-center">
+    <!-- RIGHT SIDE -->
+    <div class="col-lg-6 right-panel d-none d-lg-flex">
 
-      <h2 class="text-white fw-bold mb-4">Welcome Back</h2>
+      <div class="overlay"></div>
 
-      <img src="assets/school.webp" class="img-fluid illustration" />
+      <div class="visual-content">
+        <h1>Smart School Management</h1>
+        <p>Manage students, staff & analytics in one place.</p>
+
+        <img src="assets/school.webp" alt="illustration">
+      </div>
 
     </div>
 

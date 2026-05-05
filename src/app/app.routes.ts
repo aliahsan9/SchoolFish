@@ -12,10 +12,10 @@ import { NotFoundComponent } from './features/public/not-found.component';
 import { UnauthorizedComponent } from './features/public/unauthorized.component';
 import { StudentsComponent } from './features/students/students.component';
 import { TeachersComponent } from './features/teachers/teachers.component';
-import { ShellLayoutComponent } from './layout/shell-layout.component';
 import { LandingComponent } from './features/public/landing/landing.component';
 import { RegisterComponent } from './features/public/register/register.component';
 import { LoginComponent } from './features/public/login/login.component';
+import { ShellLayoutComponent } from './layout/layout/shell-layout/shell-layout.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },

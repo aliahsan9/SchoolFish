@@ -1,0 +1,104 @@
+<div class="app-shell">
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay"
+       *ngIf="mobileSidebar()"
+       (click)="toggleMobileSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar"
+         [class.collapsed]="!sidebarOpen()"
+         [class.mobile-open]="mobileSidebar()">
+
+    <div class="brand">
+      <span>🎓</span>
+      <h5 *ngIf="sidebarOpen()">SchoolFish</h5>
+    </div>
+
+    <nav>
+
+      <a routerLink="/app/dashboard" routerLinkActive="active">
+        <i>🏠</i><span *ngIf="sidebarOpen()">Dashboard</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin','Teacher')"
+         routerLink="/app/students"
+         routerLinkActive="active">
+        <i>🎓</i><span *ngIf="sidebarOpen()">Students</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin','Teacher')"
+         routerLink="/app/teachers"
+         routerLinkActive="active">
+        <i>👨‍🏫</i><span *ngIf="sidebarOpen()">Teachers</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin')"
+         routerLink="/app/parents"
+         routerLinkActive="active">
+        <i>👨‍👩‍👧</i><span *ngIf="sidebarOpen()">Parents</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin','Teacher')"
+         routerLink="/app/fees"
+         routerLinkActive="active">
+        <i>💰</i><span *ngIf="sidebarOpen()">Fees</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin','Teacher')"
+         routerLink="/app/academic"
+         routerLinkActive="active">
+        <i>📚</i><span *ngIf="sidebarOpen()">Academic</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin','Teacher')"
+         routerLink="/app/exams"
+         routerLinkActive="active">
+        <i>📝</i><span *ngIf="sidebarOpen()">Exams</span>
+      </a>
+
+      <a *ngIf="hasAnyRole('Admin')"
+         routerLink="/app/billing"
+         routerLinkActive="active">
+        <i>💳</i><span *ngIf="sidebarOpen()">Billing</span>
+      </a>
+
+      <a routerLink="/app/profile" routerLinkActive="active">
+        <i>👤</i><span *ngIf="sidebarOpen()">Profile</span>
+      </a>
+
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div class="left">
+        <button class="icon-btn" (click)="toggleSidebar()">☰</button>
+        <button class="icon-btn d-lg-none" (click)="toggleMobileSidebar()">📱</button>
+      </div>
+
+      <div class="right">
+
+        <div class="user">
+          <div class="avatar">👤</div>
+          <span>{{ userName() }}</span>
+        </div>
+
+        <button class="btn logout-btn" (click)="logout()">Logout</button>
+
+      </div>
+
+    </header>
+
+    <!-- CONTENT -->
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+
+  </main>
+
+</div>
