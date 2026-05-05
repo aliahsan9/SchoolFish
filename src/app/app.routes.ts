@@ -3,19 +3,19 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { AcademicComponent } from './features/academic/academic.component';
 import { BillingComponent } from './features/billing/billing.component';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { ExamsComponent } from './features/exams/exams.component';
-import { FeesComponent } from './features/fees/fees.component';
-import { ParentsComponent } from './features/parents/parents.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { NotFoundComponent } from './features/public/not-found.component';
 import { UnauthorizedComponent } from './features/public/unauthorized.component';
-import { StudentsComponent } from './features/students/students.component';
-import { TeachersComponent } from './features/teachers/teachers.component';
 import { LandingComponent } from './features/public/landing/landing.component';
 import { RegisterComponent } from './features/public/register/register.component';
 import { LoginComponent } from './features/public/login/login.component';
 import { ShellLayoutComponent } from './layout/layout/shell-layout/shell-layout.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { StudentsComponent } from './features/students/students.component';
+import { TeachersComponent } from './features/teachers/teachers.component';
+import { ParentsComponent } from './features/parents/parents.component';
+import { ExamsComponent } from './features/exams/exams.component';
+import { FeesComponent } from './features/fees/fees.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },

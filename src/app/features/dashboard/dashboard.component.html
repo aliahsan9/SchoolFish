@@ -1,0 +1,45 @@
+<div class="dashboard-wrapper">
+
+  <!-- WARNING -->
+  <div class="alert alert-warning" *ngIf="warningMessage">
+    ⚠ {{ warningMessage }}
+  </div>
+
+  <!-- HEADER -->
+  <div class="dashboard-header">
+    <h2>Dashboard Overview</h2>
+    <p>Real-time insights of your school system</p>
+  </div>
+
+  <!-- LOADING SKELETON -->
+  <div class="row g-3" *ngIf="loading">
+    <div class="col-md-3" *ngFor="let i of [1,2,3,4]">
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="row g-3" *ngIf="!loading">
+
+    <div class="col-lg-3 col-md-6" *ngFor="let item of stats">
+
+      <div class="stat-card" [style.borderColor]="item.color">
+
+        <div class="icon" [style.background]="item.color">
+          {{ item.icon }}
+        </div>
+
+        <div class="info">
+          <small>{{ item.label }}</small>
+          <h3>{{ item.value }}</h3>
+        </div>
+
+        <div class="glow"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

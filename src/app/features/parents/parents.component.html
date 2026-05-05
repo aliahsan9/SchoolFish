@@ -1,0 +1,95 @@
+<div class="parents-wrapper">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h2>Parents Management</h2>
+    <p>Manage guardians, contacts & relationships</p>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button (click)="setTab('list')" [class.active]="activeTab() === 'list'">All Parents</button>
+    <button (click)="setTab('create')" [class.active]="activeTab() === 'create'">Create</button>
+    <button (click)="setTab('edit')" [class.active]="activeTab() === 'edit'">Edit</button>
+  </div>
+
+  <!-- LIST -->
+  <div class="card-box" *ngIf="activeTab() === 'list'">
+
+    <div class="parent-grid">
+
+      <div class="parent-card" *ngFor="let p of parents">
+
+        <div class="avatar">{{ p.fullName[0] }}</div>
+
+        <div class="info">
+          <h4>{{ p.fullName }}</h4>
+          <p>{{ p.email }}</p>
+
+          <div class="meta">
+            <span>📞 {{ p.phoneNumber || 'N/A' }}</span>
+            <span>💼 {{ p.occupation || 'N/A' }}</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button (click)="startEdit(p)">Edit</button>
+          <button (click)="remove(p.id)">Delete</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CREATE -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'create'">
+
+    <h4>Create Parent</h4>
+
+    <form [formGroup]="createForm" (ngSubmit)="create()">
+
+      <div class="grid">
+        <input placeholder="First Name" formControlName="firstName">
+        <input placeholder="Last Name" formControlName="lastName">
+        <input placeholder="Email" formControlName="email">
+        <input placeholder="Phone Number" formControlName="phoneNumber">
+        <input type="password" placeholder="Password" formControlName="password">
+        <input placeholder="Occupation" formControlName="occupation">
+      </div>
+
+      <button class="btn-primary">Create Parent</button>
+
+    </form>
+
+  </div>
+
+  <!-- EDIT -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'edit'">
+
+    <h4>Edit Parent</h4>
+
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+
+      <div class="grid">
+        <input formControlName="firstName">
+        <input formControlName="lastName">
+        <input formControlName="phoneNumber">
+        <input formControlName="occupation">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary">Save Changes</button>
+        <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

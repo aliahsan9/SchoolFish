@@ -1,0 +1,132 @@
+.teachers-wrapper {
+  padding: 20px;
+  color: #fff;
+}
+
+/* HEADER */
+.page-header {
+  margin-bottom: 20px;
+
+  h2 { font-weight: 700; }
+  p { color: #94a3b8; }
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    cursor: pointer;
+
+    &.active {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+  }
+}
+
+/* CARD */
+.card-box {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* TEACHER GRID */
+.teacher-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.teacher-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 15px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: #94a3b8;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    margin-top: 10px;
+
+    button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+
+      &:hover {
+        background: #00c6ff;
+      }
+    }
+  }
+}
+
+/* FORM */
+.form-box {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  .btn-primary {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border: none;
+    color: #fff;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .teacher-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-box .grid {
+    grid-template-columns: 1fr;
+  }
+}

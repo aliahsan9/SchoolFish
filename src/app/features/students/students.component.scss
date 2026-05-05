@@ -1,0 +1,99 @@
+.students-wrapper {
+  padding: 20px;
+  color: #fff;
+}
+
+.page-header {
+  margin-bottom: 20px;
+
+  h2 { font-weight: 700; }
+  p { color: #94a3b8; }
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    cursor: pointer;
+
+    &.active {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+  }
+}
+
+/* CARD */
+.card-box {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* TABLE */
+.table {
+  color: #fff;
+
+  th {
+    color: #94a3b8;
+  }
+
+  tr:hover {
+    background: rgba(255,255,255,0.05);
+  }
+}
+
+.actions button {
+  margin-right: 5px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+
+  &:hover {
+    background: #00c6ff;
+  }
+}
+
+/* FORM */
+.form-grid {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  .btn-primary {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .form-grid .grid {
+    grid-template-columns: 1fr;
+  }
+}

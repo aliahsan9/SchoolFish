@@ -1,0 +1,115 @@
+<div class="exams-wrapper">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h2>Exams Management</h2>
+    <p>Plan, schedule and track academic exams</p>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button (click)="setTab('list')" [class.active]="activeTab() === 'list'">All Exams</button>
+    <button *ngIf="isAdmin" (click)="setTab('create')" [class.active]="activeTab() === 'create'">Create</button>
+    <button *ngIf="isAdmin" (click)="setTab('edit')" [class.active]="activeTab() === 'edit'">Edit</button>
+  </div>
+
+  <!-- LIST -->
+  <div class="card-box" *ngIf="activeTab() === 'list'">
+
+    <div class="exam-grid">
+
+      <div class="exam-card" *ngFor="let exam of exams">
+
+        <div class="header">
+          <h4>{{ exam.name }}</h4>
+          <span class="badge"
+            [ngClass]="{
+              'upcoming': getStatus(exam) === 'Upcoming',
+              'ongoing': getStatus(exam) === 'Ongoing',
+              'completed': getStatus(exam) === 'Completed'
+            }">
+            {{ getStatus(exam) }}
+          </span>
+        </div>
+
+        <div class="dates">
+          <p>📅 {{ exam.startDate | date }}</p>
+          <p>➡ {{ exam.endDate | date }}</p>
+        </div>
+
+        <div class="year">
+          🎓 {{ exam.academicYear }}
+        </div>
+
+        <div class="actions" *ngIf="isAdmin">
+          <button (click)="startEdit(exam)">Edit</button>
+          <button (click)="remove(exam.id)">Delete</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CREATE -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'create'">
+
+    <h4>Create Exam</h4>
+
+    <form [formGroup]="createForm" (ngSubmit)="create()">
+
+      <div class="grid">
+        <input placeholder="Exam Name" formControlName="name">
+
+        <select formControlName="academicYearId">
+          <option value="">Academic Year</option>
+          <option *ngFor="let y of catalog?.academicYears" [value]="y.id">
+            {{ y.name }}
+          </option>
+        </select>
+
+        <input type="date" formControlName="startDate">
+        <input type="date" formControlName="endDate">
+      </div>
+
+      <button class="btn-primary">Create Exam</button>
+
+    </form>
+
+  </div>
+
+  <!-- EDIT -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'edit'">
+
+    <h4>Edit Exam</h4>
+
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+
+      <div class="grid">
+        <input formControlName="name">
+
+        <select formControlName="academicYearId">
+          <option *ngFor="let y of catalog?.academicYears" [value]="y.id">
+            {{ y.name }}
+          </option>
+        </select>
+
+        <input type="date" formControlName="startDate">
+        <input type="date" formControlName="endDate">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary">Save</button>
+        <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

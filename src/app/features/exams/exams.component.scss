@@ -1,0 +1,154 @@
+.exams-wrapper {
+  padding: 20px;
+  color: #fff;
+}
+
+/* HEADER */
+.page-header {
+  margin-bottom: 20px;
+
+  h2 { font-weight: 700; }
+  p { color: #94a3b8; }
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+
+    &.active {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+  }
+}
+
+/* CARD */
+.card-box {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* GRID */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.exam-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 15px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dates {
+    margin: 10px 0;
+    font-size: 13px;
+    color: #cbd5f5;
+  }
+
+  .year {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+
+  .actions {
+    margin-top: 10px;
+
+    button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+
+      &:hover {
+        background: #6366f1;
+      }
+    }
+  }
+}
+
+/* BADGES */
+.badge {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+
+  &.upcoming { background: #f59e0b; }
+  &.ongoing { background: #22c55e; }
+  &.completed { background: #64748b; }
+}
+
+/* FORM */
+.form-box {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  input, select {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  .btn-row {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-primary {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border: none;
+    color: #fff;
+  }
+
+  .btn-secondary {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .exam-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-box .grid {
+    grid-template-columns: 1fr;
+  }
+}

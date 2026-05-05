@@ -1,0 +1,86 @@
+<div class="students-wrapper">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h2>Students Management</h2>
+    <p>Manage students, enrollment & parent linking</p>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button (click)="setTab('list')" [class.active]="activeTab() === 'list'">Students</button>
+    <button *ngIf="isAdmin" (click)="setTab('create')" [class.active]="activeTab() === 'create'">Create</button>
+    <button *ngIf="isAdmin" (click)="setTab('manage')" [class.active]="activeTab() === 'manage'">Manage</button>
+  </div>
+
+  <!-- LIST -->
+  <div *ngIf="activeTab() === 'list'" class="card-box">
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Name</th><th>Email</th><th>Admission</th><th>Gender</th><th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of students">
+            <td>{{ s.fullName }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.admissionNumber }}</td>
+            <td>{{ s.gender }}</td>
+
+            <td class="actions">
+              <button *ngIf="isAdmin" (click)="startEdit(s)">Edit</button>
+              <button *ngIf="isAdmin" (click)="remove(s.id)">Delete</button>
+              <button (click)="selectForManage(s)">Manage</button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+  <!-- CREATE -->
+  <div *ngIf="activeTab() === 'create'" class="card-box form-grid">
+
+    <h4>Create Student</h4>
+
+    <form [formGroup]="createForm" (ngSubmit)="create()">
+
+      <div class="grid">
+        <input placeholder="First Name" formControlName="firstName">
+        <input placeholder="Last Name" formControlName="lastName">
+        <input placeholder="Email" formControlName="email">
+        <input placeholder="Admission #" formControlName="admissionNumber">
+        <input placeholder="Password" formControlName="initialPassword">
+        <input placeholder="Phone" formControlName="phoneNumber">
+        <input type="date" formControlName="dob">
+        <input placeholder="Gender" formControlName="gender">
+        <input placeholder="Blood Group" formControlName="bloodGroup">
+        <input placeholder="Address" formControlName="address">
+      </div>
+
+      <button class="btn-primary">Create Student</button>
+
+    </form>
+
+  </div>
+
+  <!-- MANAGE -->
+  <div *ngIf="activeTab() === 'manage'" class="card-box">
+
+    <h4>Manage Student</h4>
+
+    <p class="muted">Select student first from list</p>
+
+  </div>
+
+</div>

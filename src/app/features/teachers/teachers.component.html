@@ -1,0 +1,100 @@
+<div class="teachers-wrapper">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h2>Teachers Management</h2>
+    <p>Manage faculty, onboarding & profiles</p>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button (click)="setTab('list')" [class.active]="activeTab() === 'list'">All Teachers</button>
+    <button *ngIf="isAdmin" (click)="setTab('create')" [class.active]="activeTab() === 'create'">Create</button>
+    <button *ngIf="isAdmin" (click)="setTab('edit')" [class.active]="activeTab() === 'edit'">Edit</button>
+  </div>
+
+  <!-- LIST -->
+  <div class="card-box" *ngIf="activeTab() === 'list'">
+
+    <div class="teacher-grid">
+
+      <div class="teacher-card" *ngFor="let t of teachers">
+
+        <div class="avatar">{{ t.fullName[0] }}</div>
+
+        <div class="info">
+          <h4>{{ t.fullName }}</h4>
+          <p>{{ t.email }}</p>
+
+          <div class="meta">
+            <span>📌 {{ t.employeeId }}</span>
+            <span>🎓 {{ t.qualification }}</span>
+            <span>⏳ {{ t.experienceYears }} yrs</span>
+          </div>
+        </div>
+
+        <div class="actions" *ngIf="isAdmin">
+          <button (click)="startEdit(t)">Edit</button>
+          <button (click)="remove(t.id)">Delete</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CREATE -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'create'">
+
+    <h4>Create Teacher</h4>
+
+    <form [formGroup]="createForm" (ngSubmit)="create()">
+
+      <div class="grid">
+        <input placeholder="First Name" formControlName="firstName">
+        <input placeholder="Last Name" formControlName="lastName">
+        <input placeholder="Email" formControlName="email">
+        <input placeholder="Phone" formControlName="phoneNumber">
+        <input placeholder="Employee ID" formControlName="employeeId">
+        <input type="date" formControlName="joiningDate">
+        <input placeholder="Qualification" formControlName="qualification">
+        <input type="number" placeholder="Experience" formControlName="experienceYears">
+        <input placeholder="Password" formControlName="initialPassword">
+      </div>
+
+      <button class="btn-primary">Create Teacher</button>
+
+    </form>
+
+  </div>
+
+  <!-- EDIT -->
+  <div class="card-box form-box" *ngIf="activeTab() === 'edit'">
+
+    <h4>Edit Teacher</h4>
+
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+
+      <div class="grid">
+        <input formControlName="firstName">
+        <input formControlName="lastName">
+        <input formControlName="phoneNumber">
+        <input formControlName="employeeId">
+        <input type="date" formControlName="joiningDate">
+        <input formControlName="qualification">
+        <input type="number" formControlName="experienceYears">
+        <input formControlName="newPassword">
+      </div>
+
+      <button class="btn-primary">Save Changes</button>
+
+    </form>
+
+  </div>
+
+</div>
